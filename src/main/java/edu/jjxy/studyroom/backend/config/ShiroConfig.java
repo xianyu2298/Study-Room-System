@@ -51,8 +51,12 @@ public class ShiroConfig {
         filterChain.put("/api/system/time", "anon");            // 服务器时间
         filterChain.put("/ws/**", "anon");                      // WebSocket
 
-        // 管理端接口需要管理员权限
-        filterChain.put("/api/admin/**", "jwt");
+        // 学生端自习室查询接口（需登录）
+        filterChain.put("/api/room/list", "jwt");
+        filterChain.put("/api/room/hot", "jwt");
+        filterChain.put("/api/room/areas", "jwt");
+        filterChain.put("/api/room/*", "jwt");
+        filterChain.put("/api/room/*/seats", "jwt");
 
         // 学生端接口需要登录
         filterChain.put("/api/**", "jwt");
