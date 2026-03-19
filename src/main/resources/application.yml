@@ -1,0 +1,115 @@
+# 应用服务配置
+server:
+  port: 8080
+  servlet:
+    context-path: /api
+
+spring:
+  # 允许 Bean 覆盖
+  main:
+    allow-bean-definition-overriding: true
+  autoconfigure:
+    exclude:
+      - org.apache.shiro.spring.boot.autoconfigure.ShiroAutoConfiguration
+      - org.apache.shiro.spring.boot.autoconfigure.ShiroBeanAutoConfiguration
+      - org.apache.shiro.spring.boot.autoconfigure.ShiroAnnotationProcessorAutoConfiguration
+      - org.apache.shiro.spring.config.web.autoconfigure.ShiroWebAutoConfiguration
+      - org.apache.shiro.spring.config.web.autoconfigure.ShiroWebAutoConfiguration$ShiroFilterConfiguration
+      - org.apache.shiro.spring.config.web.autoconfigure.ShiroWebFilterConfiguration
+      - org.apache.shiro.spring.config.web.autoconfigure.ShiroRequestMappingSupport
+  # 数据源配置
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/studyroom?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai&useSSL=false
+    username: root
+    password: 229826
+
+  # Redis配置
+  redis:
+    host: localhost
+    port: 6379
+    database: 0
+    timeout: 5000ms
+    lettuce:
+      pool:
+        max-active: 8
+        max-wait: -1ms
+        max-idle: 8
+        min-idle: 0
+
+  # 邮件配置
+  mail:
+    host: smtp.qq.com
+    port: 587
+    username: 2298266523@qq.com
+    password: dhujbkjeewckdjgh
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+# MyBatis-Plus配置
+mybatis-plus:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: edu.jjxy.studyroom.backend.entity
+  global-config:
+    db-config:
+      id-type: auto
+      logic-delete-field: deleteFlag
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+# JWT配置
+jwt:
+  # 密钥（生产环境请更换为更复杂的密钥）
+  secret: studyroom-jwt-secret-key-2024-very-long-and-secure
+  # 过期时间（毫秒），默认2小时
+  expire-time: 7200000
+  # Token前缀
+  token-prefix: Bearer
+  # Header名称
+  header-name: Authorization
+
+# 图形验证码配置
+kaptcha:
+  border:
+    enabled: true
+    color: 105,180,255
+  textproducer:
+    font:
+      color: 50,50,50
+      size: 30
+      name: Arial
+    content:
+      length: 4
+  width: 120
+  height: 40
+
+# 系统配置
+system:
+  # 密码错误锁定配置
+  login:
+    max-error-count: 5
+    lock-minutes: 10
+  # 邮箱验证码配置
+  email-code:
+    expire-minutes: 5
+    max-send-per-day: 5
+    interval-seconds: 60
+
+# 日志配置
+logging:
+  level:
+    root: INFO
+    edu.jjxy.studyroom: DEBUG
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+  file:
+    name: logs/studyroom.log
+    pattern:
+      file: "%d{yyyy-MM-dd}/%msg.log"
