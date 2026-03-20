@@ -2,6 +2,7 @@ package edu.jjxy.studyroom.backend.controller;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import edu.jjxy.studyroom.backend.common.R;
+import edu.jjxy.studyroom.backend.config.JwtUtil;
 import edu.jjxy.studyroom.backend.entity.dto.NoticeDTO;
 import edu.jjxy.studyroom.backend.entity.vo.NoticeVo;
 import edu.jjxy.studyroom.backend.service.NoticeService;
@@ -10,6 +11,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * 公告控制器（管理员端）
@@ -21,6 +24,7 @@ import org.springframework.web.bind.annotation.*;
 public class AdminNoticeController {
 
     private final NoticeService noticeService;
+    private final JwtUtil jwtUtil;
 
     /**
      * 分页查询公告列表
@@ -42,8 +46,8 @@ public class AdminNoticeController {
      */
     @PostMapping("/add")
     @RequiresPermissions("notice:edit")
-    public R<Void> createNotice(@Validated @RequestBody NoticeDTO dto) {
-        Long adminId = getCurrentUserId();
+    public R<Void> createNotice(@Validated @RequestBody NoticeDTO dto, HttpServletRequest request) {
+        Long adminId = getCurrentUserId(request);
         noticeService.createNotice(adminId, dto);
         return R.ok("公告发布成功", null);
     }
@@ -54,8 +58,8 @@ public class AdminNoticeController {
      */
     @PutMapping("/update")
     @RequiresPermissions("notice:edit")
-    public R<Void> updateNotice(@Validated @RequestBody NoticeDTO dto) {
-        Long adminId = getCurrentUserId();
+    public R<Void> updateNotice(@Validated @RequestBody NoticeDTO dto, HttpServletRequest request) {
+        Long adminId = getCurrentUserId(request);
         noticeService.updateNotice(adminId, dto);
         return R.ok("公告更新成功", null);
     }
@@ -71,7 +75,12 @@ public class AdminNoticeController {
         return R.ok("删除成功", null);
     }
 
-    private Long getCurrentUserId() {
-        return (Long) org.apache.shiro.SecurityUtils.getSubject().getPrincipal();
+    private Long getCurrentUserId(HttpServletRequest request) {
+        String authHeader = request.getHeader(jwtUtil.getHeaderName());
+        if (authHeader != null && authHeader.startsWith(jwtUtil.getTokenPrefix())) {
+            String token = authHeader.substring(jwtUtil.getTokenPrefix().length() + 1);
+            return jwtUtil.getUserId(token);
+        }
+        return null;
     }
 }

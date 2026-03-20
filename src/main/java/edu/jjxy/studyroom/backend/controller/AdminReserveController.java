@@ -2,6 +2,7 @@ package edu.jjxy.studyroom.backend.controller;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import edu.jjxy.studyroom.backend.common.R;
+import edu.jjxy.studyroom.backend.config.JwtUtil;
 import edu.jjxy.studyroom.backend.entity.vo.NoticeVo;
 import edu.jjxy.studyroom.backend.entity.vo.ReserveVo;
 import edu.jjxy.studyroom.backend.service.NoticeService;
@@ -11,6 +12,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.Map;
 
@@ -25,6 +27,7 @@ public class AdminReserveController {
 
     private final ReserveService reserveService;
     private final NoticeService noticeService;
+    private final JwtUtil jwtUtil;
 
     /**
      * 分页查询预约列表
@@ -51,8 +54,8 @@ public class AdminReserveController {
      */
     @PostMapping("/cancel/{id}")
     @RequiresPermissions("reserve:manage")
-    public R<Void> cancelReserve(@PathVariable Long id) {
-        Long adminId = getCurrentUserId();
+    public R<Void> cancelReserve(@PathVariable Long id, HttpServletRequest request) {
+        Long adminId = getCurrentUserId(request);
         reserveService.adminCancel(adminId, id);
         return R.ok("取消成功", null);
     }
@@ -68,7 +71,12 @@ public class AdminReserveController {
         return R.ok(stats);
     }
 
-    private Long getCurrentUserId() {
-        return (Long) org.apache.shiro.SecurityUtils.getSubject().getPrincipal();
+    private Long getCurrentUserId(HttpServletRequest request) {
+        String authHeader = request.getHeader(jwtUtil.getHeaderName());
+        if (authHeader != null && authHeader.startsWith(jwtUtil.getTokenPrefix())) {
+            String token = authHeader.substring(jwtUtil.getTokenPrefix().length() + 1);
+            return jwtUtil.getUserId(token);
+        }
+        return null;
     }
 }

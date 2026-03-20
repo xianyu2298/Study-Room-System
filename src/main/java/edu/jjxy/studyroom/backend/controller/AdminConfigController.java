@@ -1,6 +1,7 @@
 package edu.jjxy.studyroom.backend.controller;
 
 import edu.jjxy.studyroom.backend.common.R;
+import edu.jjxy.studyroom.backend.config.JwtUtil;
 import edu.jjxy.studyroom.backend.entity.dto.ConfigDTO;
 import edu.jjxy.studyroom.backend.entity.Config;
 import edu.jjxy.studyroom.backend.mapper.ConfigMapper;
@@ -12,6 +13,7 @@ import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
@@ -26,6 +28,7 @@ public class AdminConfigController {
     private final ConfigService configService;
     private final ConfigMapper configMapper;
     private final OperLogService operLogService;
+    private final JwtUtil jwtUtil;
 
     /**
      * 获取所有配置项
@@ -44,13 +47,18 @@ public class AdminConfigController {
      */
     @PutMapping("/update")
     @RequiresPermissions("config:edit")
-    public R<Void> updateConfig(@Validated @RequestBody ConfigDTO dto, @RequestParam(required = false) String operIp) {
-        Long adminId = getCurrentUserId();
+    public R<Void> updateConfig(@Validated @RequestBody ConfigDTO dto, @RequestParam(required = false) String operIp, HttpServletRequest request) {
+        Long adminId = getCurrentUserId(request);
         configService.updateConfig(adminId, dto, operIp);
         return R.ok("配置更新成功", null);
     }
 
-    private Long getCurrentUserId() {
-        return (Long) org.apache.shiro.SecurityUtils.getSubject().getPrincipal();
+    private Long getCurrentUserId(HttpServletRequest request) {
+        String authHeader = request.getHeader(jwtUtil.getHeaderName());
+        if (authHeader != null && authHeader.startsWith(jwtUtil.getTokenPrefix())) {
+            String token = authHeader.substring(jwtUtil.getTokenPrefix().length() + 1);
+            return jwtUtil.getUserId(token);
+        }
+        return null;
     }
 }

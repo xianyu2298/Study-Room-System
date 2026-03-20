@@ -25,19 +25,34 @@ public class UserRealm extends AuthorizingRealm {
 
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
-        // 获取当前登录用户
-        User user = (User) principals.getPrimaryPrincipal();
-        if (user == null) {
-            return null;
+        // 1. JWT 登录时 PrincipalCollection 中存放的是 userId(Long)
+        Long userId = principals.oneByType(Long.class);
+        if (userId != null) {
+            User user = userService.findById(userId);
+            if (user != null) {
+                return buildAuthzInfo(user);
+            }
         }
 
+        // 2. 传统登录时存放的是 User 对象
+        User user = (User) principals.getPrimaryPrincipal();
+        if (user != null && user.getId() != null) {
+            return buildAuthzInfo(user);
+        }
+
+        return null;
+    }
+
+    /**
+     * 构建权限信息
+     */
+    private SimpleAuthorizationInfo buildAuthzInfo(User user) {
         SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
 
-        // 设置角色
         if (user.getRole() != null) {
             if (user.getRole() == Constants.ROLE_SUPER_ADMIN) {
                 info.addRole("super_admin");
-                info.addStringPermission("*:*"); // 超级管理员拥有所有权限
+                info.addStringPermission("*:*");
             } else if (user.getRole() == Constants.ROLE_ADMIN) {
                 info.addRole("admin");
                 info.addStringPermission("user:view");
@@ -68,25 +83,35 @@ public class UserRealm extends AuthorizingRealm {
 
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
-        UsernamePasswordToken usernamePasswordToken = (UsernamePasswordToken) token;
-        String username = usernamePasswordToken.getUsername();
+        User user;
+        String principal;
 
-        // 根据用户名获取用户
-        User user = userService.findByStudentNoOrEmail(username);
-        if (user == null) {
-            throw new UnknownAccountException("用户不存在");
+        if (token instanceof UsernamePasswordToken) {
+            // 传统用户名密码登录
+            UsernamePasswordToken upToken = (UsernamePasswordToken) token;
+            principal = upToken.getUsername();
+            user = userService.findByStudentNoOrEmail(principal);
+        } else if (token instanceof JwtFilter.JwtToken) {
+            // JWT Token 登录（Filter 已验证过有效性，直接取 userId 查询用户）
+            JwtFilter.JwtToken jwtToken = (JwtFilter.JwtToken) token;
+            user = userService.findById(jwtToken.getUserId());
+            principal = "JWT:" + jwtToken.getUserId();
+        } else {
+            throw new AuthenticationException("不支持的认证方式");
         }
 
-        // 检查账号状态
+        if (user == null) {
+            throw new UnknownAccountException("用户不存在: " + principal);
+        }
+
         if (user.getStatus() != null && user.getStatus() == Constants.STATUS_DISABLED) {
             throw new LockedAccountException("账号已被禁用");
         }
-
         if (user.getStatus() != null && user.getStatus() == Constants.STATUS_LOCKED) {
             throw new LockedAccountException("账号已被锁定");
         }
 
-        // 简单密码验证（实际使用BCrypt等加密方式）
+        // 将 User 对象作为 principal 存入 Subject
         return new SimpleAuthenticationInfo(user, user.getPassword(), getName());
     }
 }

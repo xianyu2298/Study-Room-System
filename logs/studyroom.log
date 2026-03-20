@@ -1069,3 +1069,192 @@ org.apache.shiro.UnavailableSecurityManagerException: No SecurityManager accessi
 2026-03-20 18:17:11.625  INFO 27024 --- [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopping...
 2026-03-20 18:17:11.625  INFO 27024 --- [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=false, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@197d5a87]]
 2026-03-20 18:17:11.625  INFO 27024 --- [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopped.
+2026-03-20 18:19:08.978  INFO 26500 --- [main] e.j.s.backend.BackendApplication         : Starting BackendApplication using Java 17.0.13 on JiaoBinLong的GalaxyBook with PID 26500 (E:\Graduation Project\backend\target\classes started by tuola in E:\Graduation Project\backend)
+2026-03-20 18:19:08.980 DEBUG 26500 --- [main] e.j.s.backend.BackendApplication         : Running with Spring Boot v2.6.13, Spring v5.3.23
+2026-03-20 18:19:08.980  INFO 26500 --- [main] e.j.s.backend.BackendApplication         : No active profile set, falling back to 1 default profile: "default"
+2026-03-20 18:19:09.543  INFO 26500 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2026-03-20 18:19:09.545  INFO 26500 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-03-20 18:19:09.568  INFO 26500 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 12 ms. Found 0 Redis repository interfaces.
+2026-03-20 18:19:09.791  INFO 26500 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'shiroConfig' of type [edu.jjxy.studyroom.backend.config.ShiroConfig$$EnhancerBySpringCGLIB$$94a7b980] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2026-03-20 18:19:09.902  INFO 26500 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'userRealm' of type [edu.jjxy.studyroom.backend.config.UserRealm] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2026-03-20 18:19:09.947  INFO 26500 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'securityManager' of type [org.apache.shiro.web.mgt.DefaultWebSecurityManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2026-03-20 18:19:09.956  INFO 26500 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'jwtUtil' of type [edu.jjxy.studyroom.backend.config.JwtUtil] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2026-03-20 18:19:09.956  INFO 26500 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'jwtFilter' of type [edu.jjxy.studyroom.backend.config.JwtFilter] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2026-03-20 18:19:10.149  INFO 26500 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2026-03-20 18:19:10.156  INFO 26500 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-03-20 18:19:10.156  INFO 26500 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.68]
+2026-03-20 18:19:10.239  INFO 26500 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring embedded WebApplicationContext
+2026-03-20 18:19:10.239  INFO 26500 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1221 ms
+2026-03-20 18:19:11.232  INFO 26500 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2026-03-20 18:19:11.389  INFO 26500 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path '/api'
+2026-03-20 18:19:11.390  INFO 26500 --- [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Starting...
+2026-03-20 18:19:11.390  INFO 26500 --- [main] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@15a484a9]]
+2026-03-20 18:19:11.391  INFO 26500 --- [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Started.
+2026-03-20 18:19:11.399  INFO 26500 --- [main] e.j.s.backend.BackendApplication         : Started BackendApplication in 2.787 seconds (JVM running for 3.268)
+2026-03-20 18:19:14.966  INFO 26500 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-03-20 18:19:14.966  INFO 26500 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-03-20 18:19:14.967  INFO 26500 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-03-20 18:19:15.500 DEBUG 26500 --- [http-nio-8080-exec-1] e.j.s.b.service.GraphicCaptchaService    : 图形验证码生成 - key: 56a3df485db74702b1a6d0523b683cbd, code: 4601
+2026-03-20 18:19:19.112  WARN 26500 --- [http-nio-8080-exec-2] c.b.m.c.t.support.ReflectLambdaMeta      : Unable to make field private final java.lang.Class java.lang.invoke.SerializedLambda.capturingClass accessible: module java.base does not "opens java.lang.invoke" to unnamed module @35cabb2a
+2026-03-20 18:19:19.130  INFO 26500 --- [http-nio-8080-exec-2] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-03-20 18:19:19.267  INFO 26500 --- [http-nio-8080-exec-2] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-03-20 18:19:19.364  INFO 26500 --- [http-nio-8080-exec-2] e.j.s.backend.controller.UserController  : 用户登录成功 - userId: 4, studentNo: 222222
+2026-03-20 18:20:11.087  INFO 26500 --- [MessageBroker-1] o.s.w.s.c.WebSocketMessageBrokerStats    : WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 1, active threads = 1, queued tasks = 0, completed tasks = 0]
+2026-03-20 18:23:01.963 DEBUG 26500 --- [http-nio-8080-exec-5] e.j.s.b.service.GraphicCaptchaService    : 图形验证码生成 - key: fbcfb58bc42c4937b1575dca47139966, code: 1068
+2026-03-20 18:23:07.975  INFO 26500 --- [http-nio-8080-exec-4] e.j.s.backend.controller.UserController  : 用户登录成功 - userId: 1, studentNo: null
+2026-03-20 18:23:53.919  INFO 26500 --- [http-nio-8080-exec-2] e.j.s.backend.service.RoomService        : 创建自习室成功 - id: 6, name: A区A555自习室
+2026-03-20 18:28:25.454  INFO 26500 --- [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopping...
+2026-03-20 18:28:25.454  INFO 26500 --- [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=false, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@15a484a9]]
+2026-03-20 18:28:25.454  INFO 26500 --- [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopped.
+2026-03-20 18:28:25.609  INFO 26500 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-03-20 18:28:25.617  INFO 26500 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-03-20 18:28:33.757  INFO 28184 --- [main] e.j.s.backend.BackendApplication         : Starting BackendApplication using Java 17.0.13 on JiaoBinLong的GalaxyBook with PID 28184 (E:\Graduation Project\backend\target\classes started by tuola in E:\Graduation Project\backend)
+2026-03-20 18:28:33.759 DEBUG 28184 --- [main] e.j.s.backend.BackendApplication         : Running with Spring Boot v2.6.13, Spring v5.3.23
+2026-03-20 18:28:33.760  INFO 28184 --- [main] e.j.s.backend.BackendApplication         : No active profile set, falling back to 1 default profile: "default"
+2026-03-20 18:28:34.341  INFO 28184 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2026-03-20 18:28:34.343  INFO 28184 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-03-20 18:28:34.366  INFO 28184 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 12 ms. Found 0 Redis repository interfaces.
+2026-03-20 18:28:34.604  INFO 28184 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'shiroConfig' of type [edu.jjxy.studyroom.backend.config.ShiroConfig$$EnhancerBySpringCGLIB$$4456f7f8] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2026-03-20 18:28:34.713  INFO 28184 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'userRealm' of type [edu.jjxy.studyroom.backend.config.UserRealm] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2026-03-20 18:28:34.756  INFO 28184 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'securityManager' of type [org.apache.shiro.web.mgt.DefaultWebSecurityManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2026-03-20 18:28:34.767  INFO 28184 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'jwtUtil' of type [edu.jjxy.studyroom.backend.config.JwtUtil] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2026-03-20 18:28:34.768  INFO 28184 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'jwtFilter' of type [edu.jjxy.studyroom.backend.config.JwtFilter] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2026-03-20 18:28:34.967  INFO 28184 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2026-03-20 18:28:34.976  INFO 28184 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-03-20 18:28:34.976  INFO 28184 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.68]
+2026-03-20 18:28:35.056  INFO 28184 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring embedded WebApplicationContext
+2026-03-20 18:28:35.056  INFO 28184 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1255 ms
+2026-03-20 18:28:36.158  INFO 28184 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2026-03-20 18:28:36.326  INFO 28184 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path '/api'
+2026-03-20 18:28:36.327  INFO 28184 --- [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Starting...
+2026-03-20 18:28:36.327  INFO 28184 --- [main] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@1d2c253]]
+2026-03-20 18:28:36.328  INFO 28184 --- [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Started.
+2026-03-20 18:28:36.336  INFO 28184 --- [main] e.j.s.backend.BackendApplication         : Started BackendApplication in 2.972 seconds (JVM running for 3.466)
+2026-03-20 18:28:39.869  INFO 28184 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-03-20 18:28:39.869  INFO 28184 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-03-20 18:28:39.870  INFO 28184 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-03-20 18:28:40.334 DEBUG 28184 --- [http-nio-8080-exec-1] e.j.s.b.service.GraphicCaptchaService    : 图形验证码生成 - key: 8f8f784fd94a43e7949f6644f35ed421, code: 9137
+2026-03-20 18:28:47.796  WARN 28184 --- [http-nio-8080-exec-2] c.b.m.c.t.support.ReflectLambdaMeta      : Unable to make field private final java.lang.Class java.lang.invoke.SerializedLambda.capturingClass accessible: module java.base does not "opens java.lang.invoke" to unnamed module @35cabb2a
+2026-03-20 18:28:47.816  INFO 28184 --- [http-nio-8080-exec-2] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-03-20 18:28:47.957  INFO 28184 --- [http-nio-8080-exec-2] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-03-20 18:28:48.050  INFO 28184 --- [http-nio-8080-exec-2] e.j.s.backend.controller.UserController  : 用户登录成功 - userId: 3, studentNo: 111111
+2026-03-20 18:29:05.990  WARN 28184 --- [http-nio-8080-exec-7] e.j.s.b.common.GlobalExceptionHandler    : 业务异常 - URI: /api/reserve/create, Code: 1001, Message: 用户不存在
+2026-03-20 18:29:19.724  WARN 28184 --- [http-nio-8080-exec-8] e.j.s.b.common.GlobalExceptionHandler    : 业务异常 - URI: /api/reserve/create, Code: 1001, Message: 用户不存在
+2026-03-20 18:29:36.012  INFO 28184 --- [MessageBroker-1] o.s.w.s.c.WebSocketMessageBrokerStats    : WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 1, active threads = 1, queued tasks = 0, completed tasks = 0]
+2026-03-20 18:36:39.112  INFO 28184 --- [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopping...
+2026-03-20 18:36:39.112  INFO 28184 --- [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=false, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@1d2c253]]
+2026-03-20 18:36:39.112  INFO 28184 --- [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopped.
+2026-03-20 18:36:39.258  INFO 28184 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-03-20 18:36:39.265  INFO 28184 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-03-20 18:36:43.044  INFO 23840 --- [main] e.j.s.backend.BackendApplication         : Starting BackendApplication using Java 17.0.13 on JiaoBinLong的GalaxyBook with PID 23840 (E:\Graduation Project\backend\target\classes started by tuola in E:\Graduation Project\backend)
+2026-03-20 18:36:43.047 DEBUG 23840 --- [main] e.j.s.backend.BackendApplication         : Running with Spring Boot v2.6.13, Spring v5.3.23
+2026-03-20 18:36:43.047  INFO 23840 --- [main] e.j.s.backend.BackendApplication         : No active profile set, falling back to 1 default profile: "default"
+2026-03-20 18:36:43.619  INFO 23840 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2026-03-20 18:36:43.621  INFO 23840 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-03-20 18:36:43.645  INFO 23840 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 12 ms. Found 0 Redis repository interfaces.
+2026-03-20 18:36:43.876  INFO 23840 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'shiroConfig' of type [edu.jjxy.studyroom.backend.config.ShiroConfig$$EnhancerBySpringCGLIB$$5de6151f] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2026-03-20 18:36:43.986  INFO 23840 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'userRealm' of type [edu.jjxy.studyroom.backend.config.UserRealm] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2026-03-20 18:36:44.029  INFO 23840 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'securityManager' of type [org.apache.shiro.web.mgt.DefaultWebSecurityManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2026-03-20 18:36:44.039  INFO 23840 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'jwtUtil' of type [edu.jjxy.studyroom.backend.config.JwtUtil] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2026-03-20 18:36:44.040  INFO 23840 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'jwtFilter' of type [edu.jjxy.studyroom.backend.config.JwtFilter] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2026-03-20 18:36:44.244  INFO 23840 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2026-03-20 18:36:44.253  INFO 23840 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-03-20 18:36:44.253  INFO 23840 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.68]
+2026-03-20 18:36:44.335  INFO 23840 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring embedded WebApplicationContext
+2026-03-20 18:36:44.336  INFO 23840 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1250 ms
+2026-03-20 18:36:45.371  INFO 23840 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2026-03-20 18:36:45.535  INFO 23840 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path '/api'
+2026-03-20 18:36:45.537  INFO 23840 --- [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Starting...
+2026-03-20 18:36:45.537  INFO 23840 --- [main] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@647ff23e]]
+2026-03-20 18:36:45.537  INFO 23840 --- [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Started.
+2026-03-20 18:36:45.546  INFO 23840 --- [main] e.j.s.backend.BackendApplication         : Started BackendApplication in 2.885 seconds (JVM running for 3.367)
+2026-03-20 18:36:48.874  INFO 23840 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-03-20 18:36:48.874  INFO 23840 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-03-20 18:36:48.875  INFO 23840 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-03-20 18:36:58.434  INFO 23840 --- [http-nio-8080-exec-4] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-03-20 18:36:58.586  INFO 23840 --- [http-nio-8080-exec-4] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-03-20 18:36:58.691  WARN 23840 --- [http-nio-8080-exec-4] e.j.s.b.common.GlobalExceptionHandler    : 业务异常 - URI: /api/reserve/create, Code: 1001, Message: 用户不存在
+2026-03-20 18:37:45.205  INFO 23840 --- [MessageBroker-1] o.s.w.s.c.WebSocketMessageBrokerStats    : WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 1, active threads = 1, queued tasks = 0, completed tasks = 0]
+2026-03-20 18:40:26.829  INFO 23840 --- [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopping...
+2026-03-20 18:40:26.829  INFO 23840 --- [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=false, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@647ff23e]]
+2026-03-20 18:40:26.829  INFO 23840 --- [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopped.
+2026-03-20 18:40:26.974  INFO 23840 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-03-20 18:40:26.981  INFO 23840 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-03-20 18:40:30.729  INFO 24440 --- [main] e.j.s.backend.BackendApplication         : Starting BackendApplication using Java 17.0.13 on JiaoBinLong的GalaxyBook with PID 24440 (E:\Graduation Project\backend\target\classes started by tuola in E:\Graduation Project\backend)
+2026-03-20 18:40:30.731 DEBUG 24440 --- [main] e.j.s.backend.BackendApplication         : Running with Spring Boot v2.6.13, Spring v5.3.23
+2026-03-20 18:40:30.731  INFO 24440 --- [main] e.j.s.backend.BackendApplication         : No active profile set, falling back to 1 default profile: "default"
+2026-03-20 18:40:31.296  INFO 24440 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2026-03-20 18:40:31.299  INFO 24440 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-03-20 18:40:31.322  INFO 24440 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 12 ms. Found 0 Redis repository interfaces.
+2026-03-20 18:40:31.551  INFO 24440 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'shiroConfig' of type [edu.jjxy.studyroom.backend.config.ShiroConfig$$EnhancerBySpringCGLIB$$355edf8b] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2026-03-20 18:40:31.660  INFO 24440 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'userRealm' of type [edu.jjxy.studyroom.backend.config.UserRealm] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2026-03-20 18:40:31.701  INFO 24440 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'securityManager' of type [org.apache.shiro.web.mgt.DefaultWebSecurityManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2026-03-20 18:40:31.710  INFO 24440 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'jwtUtil' of type [edu.jjxy.studyroom.backend.config.JwtUtil] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2026-03-20 18:40:31.710  INFO 24440 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'jwtFilter' of type [edu.jjxy.studyroom.backend.config.JwtFilter] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2026-03-20 18:40:31.908  INFO 24440 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2026-03-20 18:40:31.923  INFO 24440 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-03-20 18:40:31.923  INFO 24440 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.68]
+2026-03-20 18:40:32.017  INFO 24440 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring embedded WebApplicationContext
+2026-03-20 18:40:32.017  INFO 24440 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1247 ms
+2026-03-20 18:40:33.036  INFO 24440 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2026-03-20 18:40:33.203  INFO 24440 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path '/api'
+2026-03-20 18:40:33.205  INFO 24440 --- [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Starting...
+2026-03-20 18:40:33.205  INFO 24440 --- [main] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@3c8fe8ad]]
+2026-03-20 18:40:33.205  INFO 24440 --- [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Started.
+2026-03-20 18:40:33.214  INFO 24440 --- [main] e.j.s.backend.BackendApplication         : Started BackendApplication in 2.857 seconds (JVM running for 3.338)
+2026-03-20 18:40:40.866  INFO 24440 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-03-20 18:40:40.867  INFO 24440 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-03-20 18:40:40.868  INFO 24440 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-03-20 18:40:47.497  INFO 24440 --- [http-nio-8080-exec-4] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-03-20 18:40:47.636  INFO 24440 --- [http-nio-8080-exec-4] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-03-20 18:40:47.735  WARN 24440 --- [http-nio-8080-exec-4] e.j.s.b.common.GlobalExceptionHandler    : 业务异常 - URI: /api/reserve/create, Code: 1001, Message: 用户不存在
+2026-03-20 18:41:32.893  INFO 24440 --- [MessageBroker-1] o.s.w.s.c.WebSocketMessageBrokerStats    : WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 1, active threads = 1, queued tasks = 0, completed tasks = 0]
+2026-03-20 18:49:16.817  INFO 24440 --- [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopping...
+2026-03-20 18:49:16.817  INFO 24440 --- [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=false, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@3c8fe8ad]]
+2026-03-20 18:49:16.817  INFO 24440 --- [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopped.
+2026-03-20 18:49:16.959  INFO 24440 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-03-20 18:49:16.966  INFO 24440 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-03-20 18:55:06.509  INFO 18236 --- [main] e.j.s.backend.BackendApplication         : Starting BackendApplication using Java 17.0.13 on JiaoBinLong的GalaxyBook with PID 18236 (E:\Graduation Project\backend\target\classes started by tuola in E:\Graduation Project\backend)
+2026-03-20 18:55:06.510 DEBUG 18236 --- [main] e.j.s.backend.BackendApplication         : Running with Spring Boot v2.6.13, Spring v5.3.23
+2026-03-20 18:55:06.511  INFO 18236 --- [main] e.j.s.backend.BackendApplication         : No active profile set, falling back to 1 default profile: "default"
+2026-03-20 18:55:07.131  INFO 18236 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2026-03-20 18:55:07.133  INFO 18236 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-03-20 18:55:07.156  INFO 18236 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 11 ms. Found 0 Redis repository interfaces.
+2026-03-20 18:55:07.388  INFO 18236 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'shiroConfig' of type [edu.jjxy.studyroom.backend.config.ShiroConfig$$EnhancerBySpringCGLIB$$28b6d055] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2026-03-20 18:55:07.498  INFO 18236 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'userRealm' of type [edu.jjxy.studyroom.backend.config.UserRealm] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2026-03-20 18:55:07.544  INFO 18236 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'securityManager' of type [org.apache.shiro.web.mgt.DefaultWebSecurityManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2026-03-20 18:55:07.554  INFO 18236 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'jwtUtil' of type [edu.jjxy.studyroom.backend.config.JwtUtil] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2026-03-20 18:55:07.555  INFO 18236 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'jwtFilter' of type [edu.jjxy.studyroom.backend.config.JwtFilter] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2026-03-20 18:55:07.752  INFO 18236 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2026-03-20 18:55:07.761  INFO 18236 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-03-20 18:55:07.761  INFO 18236 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.68]
+2026-03-20 18:55:07.849  INFO 18236 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring embedded WebApplicationContext
+2026-03-20 18:55:07.850  INFO 18236 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1293 ms
+2026-03-20 18:55:08.950  INFO 18236 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2026-03-20 18:55:09.172  INFO 18236 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path '/api'
+2026-03-20 18:55:09.174  INFO 18236 --- [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Starting...
+2026-03-20 18:55:09.174  INFO 18236 --- [main] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@5e2975ca]]
+2026-03-20 18:55:09.174  INFO 18236 --- [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Started.
+2026-03-20 18:55:09.185  INFO 18236 --- [main] e.j.s.backend.BackendApplication         : Started BackendApplication in 3.073 seconds (JVM running for 3.587)
+2026-03-20 18:56:08.753  INFO 18236 --- [MessageBroker-1] o.s.w.s.c.WebSocketMessageBrokerStats    : WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 1, active threads = 1, queued tasks = 0, completed tasks = 0]
+2026-03-20 18:59:00.836  INFO 18236 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-03-20 18:59:00.836  INFO 18236 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-03-20 18:59:00.840  INFO 18236 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2026-03-20 18:59:01.401  INFO 18236 --- [http-nio-8080-exec-2] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-03-20 18:59:01.534  INFO 18236 --- [http-nio-8080-exec-2] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-03-20 18:59:02.663  WARN 18236 --- [http-nio-8080-exec-3] c.b.m.c.t.support.ReflectLambdaMeta      : Unable to make field private final java.lang.Class java.lang.invoke.SerializedLambda.capturingClass accessible: module java.base does not "opens java.lang.invoke" to unnamed module @35cabb2a
+2026-03-20 18:59:10.216  WARN 18236 --- [http-nio-8080-exec-5] e.j.s.b.common.GlobalExceptionHandler    : 业务异常 - URI: /api/reserve/create, Code: 2005, Message: 预约开始时间不能早于当前时间
+2026-03-20 18:59:18.710  WARN 18236 --- [http-nio-8080-exec-6] e.j.s.b.common.GlobalExceptionHandler    : 业务异常 - URI: /api/reserve/create, Code: 1016, Message: 请勿重复提交
+2026-03-20 18:59:34.604  WARN 18236 --- [http-nio-8080-exec-1] e.j.s.b.common.GlobalExceptionHandler    : 业务异常 - URI: /api/reserve/create, Code: 2005, Message: 预约开始时间不能早于当前时间
+2026-03-20 18:59:54.627  WARN 18236 --- [http-nio-8080-exec-2] e.j.s.b.common.GlobalExceptionHandler    : 业务异常 - URI: /api/reserve/create, Code: 2007, Message: 预约结束时间不能晚于自习室关闭时间
+2026-03-20 19:00:09.990  WARN 18236 --- [http-nio-8080-exec-3] e.j.s.b.common.GlobalExceptionHandler    : 业务异常 - URI: /api/reserve/create, Code: 2008, Message: 预约时长需在1-1小时之间
+2026-03-20 19:00:18.813  WARN 18236 --- [http-nio-8080-exec-5] e.j.s.b.common.GlobalExceptionHandler    : 业务异常 - URI: /api/reserve/create, Code: 1016, Message: 请勿重复提交
+2026-03-20 19:00:27.605  INFO 18236 --- [http-nio-8080-exec-6] e.j.s.backend.service.ReserveService     : 创建预约成功 - userId: 3, seatId: 26, reserveId: 1
+2026-03-20 19:00:33.037  INFO 18236 --- [http-nio-8080-exec-10] e.j.s.backend.service.SignService        : 签到成功 - reserveId: 1, userId: 3
+2026-03-20 19:00:40.943  WARN 18236 --- [http-nio-8080-exec-3] e.j.s.b.common.GlobalExceptionHandler    : 业务异常 - URI: /api/sign/out/1, Code: 3008, Message: 未到预约开始时间或已过结束时间，无法签退
+2026-03-20 19:00:49.658  WARN 18236 --- [http-nio-8080-exec-5] e.j.s.b.common.GlobalExceptionHandler    : 业务异常 - URI: /api/sign/out/1, Code: 3008, Message: 未到预约开始时间或已过结束时间，无法签退
+2026-03-20 19:01:14.540  INFO 18236 --- [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopping...
+2026-03-20 19:01:14.540  INFO 18236 --- [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=false, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@5e2975ca]]
+2026-03-20 19:01:14.540  INFO 18236 --- [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopped.
+2026-03-20 19:01:14.690  INFO 18236 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-03-20 19:01:14.695  INFO 18236 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

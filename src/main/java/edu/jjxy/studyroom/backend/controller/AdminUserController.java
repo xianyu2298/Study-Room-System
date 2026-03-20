@@ -6,6 +6,7 @@ import edu.jjxy.studyroom.backend.common.BusinessException;
 import edu.jjxy.studyroom.backend.common.Constants;
 import edu.jjxy.studyroom.backend.common.ResultCode;
 import edu.jjxy.studyroom.backend.common.R;
+import edu.jjxy.studyroom.backend.config.JwtUtil;
 import edu.jjxy.studyroom.backend.entity.User;
 import edu.jjxy.studyroom.backend.entity.dto.BatchDTO;
 import edu.jjxy.studyroom.backend.entity.vo.UserVo;
@@ -21,6 +22,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -38,6 +40,7 @@ public class AdminUserController {
     private final ConfigService configService;
     private final OperLogService operLogService;
     private final RedisTemplate<String, Object> redisTemplate;
+    private final JwtUtil jwtUtil;
 
     /**
      * 分页查询学生用户列表
@@ -74,14 +77,14 @@ public class AdminUserController {
     @PostMapping("/toggleStatus/{id}")
     @RequiresPermissions("user:edit")
     @Transactional(rollbackFor = Exception.class)
-    public R<Void> toggleStatus(@PathVariable Long id, @RequestParam(required = false) String operIp) {
+    public R<Void> toggleStatus(@PathVariable Long id, @RequestParam(required = false) String operIp, HttpServletRequest request) {
         User user = userMapper.selectById(id);
         if (user == null) throw new BusinessException(ResultCode.USER_NOT_FOUND);
         if (user.getRole() != Constants.ROLE_STUDENT) {
             throw new BusinessException(ResultCode.USER_NOT_STUDENT);
         }
 
-        Long adminId = getCurrentUserId();
+        Long adminId = getCurrentUserId(request);
         int oldStatus = user.getStatus();
         int newStatus = oldStatus == Constants.STATUS_NORMAL ? Constants.STATUS_DISABLED : Constants.STATUS_NORMAL;
 
@@ -107,7 +110,7 @@ public class AdminUserController {
      */
     @PostMapping("/resetPassword/{id}")
     @RequiresPermissions("user:edit")
-    public R<Void> resetPassword(@PathVariable Long id, @RequestParam(required = false) String operIp) {
+    public R<Void> resetPassword(@PathVariable Long id, @RequestParam(required = false) String operIp, HttpServletRequest request) {
         User user = userMapper.selectById(id);
         if (user == null) throw new BusinessException(ResultCode.USER_NOT_FOUND);
         if (user.getRole() != Constants.ROLE_STUDENT) {
@@ -120,7 +123,7 @@ public class AdminUserController {
         user.setUpdateTime(LocalDateTime.now());
         userMapper.updateById(user);
 
-        Long adminId = getCurrentUserId();
+        Long adminId = getCurrentUserId(request);
         operLogService.log(adminId, Constants.LOG_MODULE_USER,
                 "重置用户密码: userId=" + id,
                 operIp != null ? operIp : "0.0.0.0");
@@ -136,7 +139,7 @@ public class AdminUserController {
     @PostMapping("/batchToggle")
     @RequiresPermissions("user:edit")
     @Transactional(rollbackFor = Exception.class)
-    public R<Void> batchToggle(@RequestBody BatchDTO dto, @RequestParam Integer status, @RequestParam(required = false) String operIp) {
+    public R<Void> batchToggle(@RequestBody BatchDTO dto, @RequestParam Integer status, @RequestParam(required = false) String operIp, HttpServletRequest request) {
         if (dto.getIds() == null || dto.getIds().isEmpty()) {
             throw new BusinessException(ResultCode.PARAMETER_ERROR, "请选择要操作的用户");
         }
@@ -144,7 +147,7 @@ public class AdminUserController {
             throw new BusinessException(ResultCode.BATCH_MAX_LIMIT, Constants.BATCH_MAX_SIZE);
         }
 
-        Long adminId = getCurrentUserId();
+        Long adminId = getCurrentUserId(request);
         for (Long userId : dto.getIds()) {
             User user = userMapper.selectById(userId);
             if (user != null && user.getRole() == Constants.ROLE_STUDENT) {
@@ -196,7 +199,12 @@ public class AdminUserController {
         }
     }
 
-    private Long getCurrentUserId() {
-        return (Long) org.apache.shiro.SecurityUtils.getSubject().getPrincipal();
+    private Long getCurrentUserId(HttpServletRequest request) {
+        String authHeader = request.getHeader(jwtUtil.getHeaderName());
+        if (authHeader != null && authHeader.startsWith(jwtUtil.getTokenPrefix())) {
+            String token = authHeader.substring(jwtUtil.getTokenPrefix().length() + 1);
+            return jwtUtil.getUserId(token);
+        }
+        return null;
     }
 }

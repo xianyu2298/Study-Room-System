@@ -2,6 +2,7 @@ package edu.jjxy.studyroom.backend.controller;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import edu.jjxy.studyroom.backend.common.R;
+import edu.jjxy.studyroom.backend.config.JwtUtil;
 import edu.jjxy.studyroom.backend.entity.dto.ReserveDTO;
 import edu.jjxy.studyroom.backend.entity.vo.ReserveVo;
 import edu.jjxy.studyroom.backend.service.ReserveService;
@@ -11,6 +12,7 @@ import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.Map;
 
@@ -24,6 +26,7 @@ import java.util.Map;
 public class ReserveController {
 
     private final ReserveService reserveService;
+    private final JwtUtil jwtUtil;
 
     /**
      * 创建预约
@@ -31,8 +34,8 @@ public class ReserveController {
      */
     @PostMapping("/create")
     @RequiresPermissions("reserve:create")
-    public R<ReserveVo> createReserve(@Validated @RequestBody ReserveDTO dto) {
-        Long userId = getCurrentUserId();
+    public R<ReserveVo> createReserve(@Validated @RequestBody ReserveDTO dto, HttpServletRequest request) {
+        Long userId = getCurrentUserId(request);
         ReserveVo result = reserveService.createReserve(userId, dto);
         return R.ok("预约成功", result);
     }
@@ -43,8 +46,8 @@ public class ReserveController {
      */
     @PostMapping("/cancel/{id}")
     @RequiresPermissions("reserve:create")
-    public R<Void> cancelReserve(@PathVariable Long id) {
-        Long userId = getCurrentUserId();
+    public R<Void> cancelReserve(@PathVariable Long id, HttpServletRequest request) {
+        Long userId = getCurrentUserId(request);
         reserveService.cancelReserve(userId, id);
         return R.ok("取消成功", null);
     }
@@ -58,8 +61,9 @@ public class ReserveController {
     public R<Page<ReserveVo>> getMyReserveList(
             @RequestParam(defaultValue = "1") Integer page,
             @RequestParam(defaultValue = "10") Integer size,
-            @RequestParam(required = false) Integer status) {
-        Long userId = getCurrentUserId();
+            @RequestParam(required = false) Integer status,
+            HttpServletRequest request) {
+        Long userId = getCurrentUserId(request);
         Page<ReserveVo> result = reserveService.getMyReservePage(userId, page, size, status);
         return R.ok(result);
     }
@@ -70,14 +74,22 @@ public class ReserveController {
      */
     @GetMapping("/my/stats")
     @RequiresPermissions("reserve:create")
-    public R<Map<String, Object>> getMyStats() {
-        Long userId = getCurrentUserId();
+    public R<Map<String, Object>> getMyStats(HttpServletRequest request) {
+        Long userId = getCurrentUserId(request);
         Map<String, Object> stats = reserveService.getMyStats(userId);
         return R.ok(stats);
     }
 
-    private Long getCurrentUserId() {
-        // 从 Shiro 上下文获取当前用户ID
-        return (Long) org.apache.shiro.SecurityUtils.getSubject().getPrincipal();
+    /**
+     * 从请求头直接解析 JWT Token 获取当前用户ID
+     * 不依赖 Shiro Subject.getPrincipal()
+     */
+    private Long getCurrentUserId(HttpServletRequest request) {
+        String authHeader = request.getHeader(jwtUtil.getHeaderName());
+        if (authHeader != null && authHeader.startsWith(jwtUtil.getTokenPrefix())) {
+            String token = authHeader.substring(jwtUtil.getTokenPrefix().length() + 1);
+            return jwtUtil.getUserId(token);
+        }
+        return null;
     }
 }
