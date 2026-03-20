@@ -19,7 +19,7 @@ import java.util.List;
  */
 @Slf4j
 @RestController
-@RequestMapping("/seat")
+@RequestMapping("/admin/seat")
 @RequiredArgsConstructor
 public class SeatController {
 

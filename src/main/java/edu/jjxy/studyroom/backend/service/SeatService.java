@@ -69,17 +69,22 @@ public class SeatService {
     }
 
     /**
-     * 查询指定自习室的有效座位列表（学生端）
+     * 查询指定自习室的有效座位（学生端 - 展示座位图，过滤禁用/维护中）
      */
     public List<SeatVo> getAvailableSeats(Long roomId) {
-        String cacheKey = REDIS_KEY_SEAT_LIST + roomId + ":available";
+        String cacheKey = REDIS_KEY_SEAT_LIST + roomId + ":all_valid";
         @SuppressWarnings("unchecked")
         List<SeatVo> cached = (List<SeatVo>) redisTemplate.opsForValue().get(cacheKey);
         if (cached != null) {
             return cached;
         }
 
-        List<Seat> seats = seatMapper.selectActiveSeatsByRoomId(roomId);
+        LambdaQueryWrapper<Seat> wrapper = new LambdaQueryWrapper<>();
+        wrapper.eq(Seat::getRoomId, roomId)
+               .ne(Seat::getStatus, Constants.SEAT_DISABLED)
+               .ne(Seat::getStatus, Constants.SEAT_MAINTENANCE)
+               .orderByAsc(Seat::getSeatNo);
+        List<Seat> seats = seatMapper.selectList(wrapper);
         List<SeatVo> voList = seats.stream()
                 .map(this::convertToVo)
                 .collect(Collectors.toList());

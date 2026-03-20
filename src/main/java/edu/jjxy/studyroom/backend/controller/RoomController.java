@@ -9,6 +9,7 @@ import edu.jjxy.studyroom.backend.service.RoomService;
 import edu.jjxy.studyroom.backend.service.SeatService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -51,6 +52,7 @@ public class RoomController {
      * GET /api/room/{roomId}/seats
      */
     @GetMapping("/{roomId}/seats")
+    @RequiresPermissions("reserve:create")
     public R<List<SeatVo>> getRoomSeats(@PathVariable Long roomId) {
         List<SeatVo> seats = seatService.getAvailableSeats(roomId);
         return R.ok(seats);
